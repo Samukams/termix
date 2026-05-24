@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>TERMIX SQL</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="classic">
+
+    <div class="bg"></div>
+
+    <div id="loginModal">
+
+        <div class="login-box">
+
+            <h2>👤 DIGITE SEU NOME</h2>
+
+            <input
+            type="text"
+            id="playerName"
+            maxlength="15"
+            placeholder="Seu nome">
+
+            <button id="savePlayer">
+
+                ENTRAR
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <button id="rankingBtn">
+
+        🏆
+
+    </button>
+
+    <div id="rankingModal"
+    class="hidden">
+
+        <div class="ranking-box">
+
+            <button id="closeRanking">
+
+                ✖
+
+            </button>
+
+            <h2>
+
+                🏆 RANKING TERMIX
+
+            </h2>
+
+            <div class="ranking-tabs">
+
+                <button class="tabBtn"
+                data-tab="geral">
+
+                    GERAL
+
+                </button>
+
+                <button class="tabBtn"
+                data-tab="medio">
+
+                    MÉDIO
+
+                </button>
+
+                <button class="tabBtn"
+                data-tab="dificil">
+
+                    DIFÍCIL
+
+                </button>
+
+            </div>
+
+            <div id="rankingContent">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="profileModal"
+    class="hidden">
+
+        <div class="profile-box">
+
+            <button id="closeProfile">
+
+                ✖
+
+            </button>
+
+            <div id="profileContent">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="menu">
+
+        <h1>TERMIX</h1>
+
+        <div class="mode-buttons">
+
+            <button class="mode-btn"
+            data-mode="easy">
+
+                FÁCIL
+
+            </button>
+
+            <button class="mode-btn"
+            data-mode="medium">
+
+                MÉDIO
+
+            </button>
+
+            <button class="mode-btn"
+            data-mode="hard">
+
+                DIFÍCIL
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <main class="container hidden">
+
+        <h1>TERMIX</h1>
+
+        <div class="theme-box">
+
+            <label>TEMA</label>
+
+            <select id="themeSelect">
+
+                <option value="classic">
+                    CLASSIC
+                </option>
+
+                <option value="matrix">
+                    MATRIX
+                </option>
+
+                <option value="night">
+                    NIGHT
+                </option>
+
+                <option value="dark">
+                    DARK
+                </option>
+
+                <option value="blood">
+                    BLOOD
+                </option>
+
+            </select>
+
+        </div>
+
+        <div id="bomb" class="hidden">
+        💣
+        </div>
+
+        <div id="timer"></div>
+
+        <div id="board"></div>
+
+        <div id="keyboard"></div>
+
+        <button id="newGame">
+
+            NOVA PALAVRA
+
+        </button>
+
+    </main>
+
+    <script src="script.js"></script>
+
+    <div id="explosion"></div>
+
+</body>
+
+</html>
