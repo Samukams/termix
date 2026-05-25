@@ -9,17 +9,10 @@ app.use(express.static("public"));
 app.use(express.json());
 
 const pool = new Pool({
-
-    user:"postgres",
-
-    host:"localhost",
-
-    database:"termix",
-
-    password:"senai",
-
-    port:5432
-
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 pool.connect((err)=>{
@@ -375,12 +368,10 @@ app.get("/player/:name", async (req,res)=>{
 
 });
 
-app.listen(3000,()=>{
+const PORT = process.env.PORT || 3000;
 
-    console.log(
+app.listen(PORT,()=>{
 
-        "Servidor rodando em http://localhost:3000"
-
-    );
+    console.log("Servidor rodando 🔥");
 
 });
