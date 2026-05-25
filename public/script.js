@@ -73,12 +73,19 @@ let timeLeft = 0;
 
 window.onload = ()=>{
 
+    document.body.className = "";
+
     document.body.classList.add(
         "classic"
     );
 
     themeSelect.value =
     "classic";
+
+    localStorage.setItem(
+        "theme",
+        "classic"
+    );
 
     const savedPlayer =
     localStorage.getItem(
@@ -493,6 +500,8 @@ function deleteLetter(){
     let tile =
     grid[currentRow][selectedCol];
 
+    tile.classList.remove("selected");
+
     if(tile.textContent !== ""){
 
         tile.textContent = "";
@@ -663,18 +672,72 @@ async function checkWord(){
 
     if(currentRow === rows){
 
-        gameOver = true;
+    gameOver = true;
 
-        clearInterval(timer);
+    clearInterval(timer);
 
-        saveScore(false);
+    saveScore(false);
 
-        showMessage(
-            "Fim de jogo! Palavra: "
-            + secretWord
+    if(gameMode === "medium" || gameMode === "hard"){
+
+        const bomb =
+        document.getElementById("bomb");
+
+        bomb.innerHTML = "💥";
+
+        bomb.classList.add("bomb-explode");
+
+        const explosion =
+        document.getElementById("explosion");
+
+        explosion.classList.add(
+            "explosion-active"
         );
 
+        setTimeout(()=>{
+
+            explosion.classList.remove(
+                "explosion-active"
+            );
+
+        },800);
+
+        document.body.animate([
+
+            {
+                transform:"translateX(-25px)"
+            },
+
+            {
+                transform:"translateX(25px)"
+            },
+
+            {
+                transform:"translateY(-15px)"
+            },
+
+            {
+                transform:"translateY(15px)"
+            },
+
+            {
+                transform:"translateX(0px)"
+            }
+
+        ],{
+
+            duration:700
+
+        });
+
     }
+
+    showMessage(
+        "Fim de jogo! Palavra: "
+        + secretWord
+    );
+
+}
 
 }
 
@@ -905,7 +968,7 @@ function updateSelection(){
     const tile =
     grid[currentRow][selectedCol];
 
-    if(tile){
+    if(tile && tile.textContent === ""){
 
         tile.classList.add("selected");
 
@@ -920,6 +983,14 @@ document.addEventListener(
         const key =
         e.key.toUpperCase();
 
+        if(
+            document.activeElement === themeSelect
+        ){
+
+            themeSelect.blur();
+
+        }
+
         if(key==="BACKSPACE"){
 
             deleteLetter();
@@ -929,8 +1000,6 @@ document.addEventListener(
         }
 
         if(key === "ENTER"){
-
-            e.preventDefault();
 
             if(gameOver) return;
 
@@ -1135,10 +1204,14 @@ themeSelect.addEventListener(
     "change",
     ()=>{
 
-        document.body.className =
-        "";
+        document.body.className = "";
 
         document.body.classList.add(
+            themeSelect.value
+        );
+
+        localStorage.setItem(
+            "theme",
             themeSelect.value
         );
 

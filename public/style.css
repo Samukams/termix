@@ -1418,3 +1418,19 @@ body.blood .mode-btn{
     }
 
 }
+
+.tile.correct,
+.tile.present,
+.tile.absent{
+
+    box-shadow:none !important;
+
+}
+
+.tile.selected:not(:empty){
+
+    border:none !important;
+
+    box-shadow:none !important;
+
+}
