@@ -375,13 +375,12 @@ app.get("/player/:name", async (req,res)=>{
 
 });
 
-const PORT =
-process.env.PORT || 3000;
-
-app.listen(PORT,()=>{
+app.listen(3000,()=>{
 
     console.log(
-        "Servidor rodando 🔥"
+
+        "Servidor rodando em http://localhost:3000"
+
     );
 
 });
